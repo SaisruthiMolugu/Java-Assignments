@@ -29,6 +29,15 @@ public static void main (String[] args)
     	System.out.println(b.getBookAuthor()+"  "+b.getBookCategory()+" "+b.getBookTitle()+" "+b.getBookPrice()+" "+b.getCopies());
     bdao.modifyBook(new Book("C","The Complete C","Yeshwanth",800,10,"C"));
   // bdao.DeleteBook(new Book("HFC"," "," ",0,0," "));
+	Query qry = session.createSQLQuery("select * from Book"); // to get all entries
+    	  List<Object[]> list =qry.getResultList();
+    	  for(Object[] obj:list)
+    	  {
+    		  for(Object o:obj)
+    			  System.out.print(o+"  ");
+    		  System.out.println();
+    	  }
+    	  System.out.println(list);
     session.close(); 
 
     HibernateUtil.shutdown();
